@@ -198,30 +198,4 @@ class HashTable:
             self.storage = new_storage    
          
 
-if __name__ == "__main__":
-    ht = HashTable(2)
 
-    ht.put("line_1", "Tiny hash table")
-    ht.put("line_2", "Filled beyond capacity")
-    ht.put("line_3", "Linked list saves the day!")
-
-    print("")
-
-    # Test storing beyond capacity
-    print(ht.get("line_1"))
-    print(ht.get("line_2"))
-    print(ht.get("line_3"))
-
-    # Test resizing
-    old_capacity = len(ht.storage)
-    new_capacity = len(ht.storage)*2
-    ht.resize(new_capacity)
-
-    print(f"\nResized from {old_capacity} to {new_capacity}.\n")
-
-    # Test if data intact after resizing
-    print(ht.get("line_1"))
-    print(ht.get("line_2"))
-    print(ht.get("line_3"))
-
-    print("")
