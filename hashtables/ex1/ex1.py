@@ -1,28 +1,22 @@
-from hashtable import *
-
-
 def get_indices_of_item_weights(weights, length, limit):
 
-    """
-    YOUR CODE HERE
-    """   
-
-    ht = HashTable(10)
-    if length == 1:
-        return None
-    for i in range(length):
-        ht.put(weights[i], i)
-
-    for i in range(0, length):
-        difference = limit - weights[i]
-        result = ht.get(difference)
-        if result is not None:
-            return(result, i)
-
-    if difference is not None:
-        if difference >= i:
-            return (difference, i)
+    wt_dict = {}
+    for i in range(len(weights)):
+        if weights[i] not in wt_dict:
+            wt_dict[weights[i]] = [i]
         else:
-            return (i, difference)
-    return None    
+            wt_dict[weights[i]] += [i]
+    
+    for wt in weights:
+        
+        if limit - wt in wt_dict:
+            if wt == limit - wt:
+                return [wt_dict[wt][1], wt_dict[wt][0]]
+            if wt > wt_dict[limit-wt][0]:
+                return [wt_dict[limit-wt][0], wt_dict[wt][0]]
+            else:
+                return [wt_dict[wt][0]. wt_dict[limit-wt][0]]
+
+    return None
+
 
